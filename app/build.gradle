@@ -1,0 +1,28 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.eelly.seller.wechat"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 204 //TODO 这个版本码，要和厂+的版本码一致，不然拿不到accessToken
+        versionName "2.0.4"
+    }
+    buildTypes {
+            release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    provided fileTree(include: ['*.jar'], dir: 'libs')
+
+    compile project(':libmarsdaemon')
+    compile 'net.zetetic:android-database-sqlcipher:3.4.0'
+    compile project(':httplib')
+}
